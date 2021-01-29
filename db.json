@@ -1,13 +1,8 @@
 {
   "products": [
     {
-      "name": "Jugo de Naranja",
-      "cost": "300",
-      "id": 3
-    },
-    {
       "name": "Rib Eye 800g",
-      "cost": "200",
+      "cost": "900",
       "id": 4
     },
     {

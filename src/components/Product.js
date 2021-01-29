@@ -1,12 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deleteProductAction } from '../actions/productsActions';
+import {
+  deleteProductAction,
+  getEditProductAction,
+} from '../actions/productsActions';
 import Swal from 'sweetalert2';
 const Product = ({ product }) => {
   const { name, cost, id } = product;
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onClickDelete = () => {
     confirDeleteProduct();
@@ -28,6 +32,11 @@ const Product = ({ product }) => {
     });
   };
 
+  const goToEsditPage = () => {
+    dispatch(getEditProductAction(product));
+    history.push(`/products/edit/${id}`);
+  };
+
   return (
     <tr>
       <td>{name}</td>
@@ -35,9 +44,13 @@ const Product = ({ product }) => {
         <span className="font-weight-bold">$ {cost}</span>
       </td>
       <td className="acciones">
-        <Link to={`/products/edit/${id}`} className="btn btn-primary mr-2">
+        <button
+          type="button"
+          className="btn btn-primary mr-2"
+          onClick={() => goToEsditPage()}
+        >
           Editar
-        </Link>
+        </button>
         <button
           type="button"
           className="btn btn-danger"
