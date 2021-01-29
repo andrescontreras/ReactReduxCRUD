@@ -5,6 +5,9 @@ import {
   GET_PRODUCTS,
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_SUCCESS,
+  GET_DELETE_PRODUCT,
+  GET_DELETE_PRODUCT_SUCCESS,
+  GET_DELETE_PRODUCT_ERROR,
 } from '../types/types';
 
 import axiosClient from '../config/axios';
@@ -72,5 +75,35 @@ const getProductsSuccess = (products) => ({
 
 const getProductsError = () => ({
   type: GET_PRODUCTS_ERROR,
+  payload: true,
+});
+
+export function deleteProductAction(id) {
+  return async (dispatch) => {
+    dispatch(getDeleteProduct(id));
+    try {
+      const request = await axiosClient.delete(`/products/${id}`);
+      console.log(request);
+      dispatch(getDeleteProductSuccess());
+      Swal.fire('Borrado', 'Producto borrado', 'success');
+    } catch (error) {
+      console.log(error);
+      dispatch(getDeleteProductError(error));
+      Swal.fire('Error al borrar', 'Error al borrar el producto', 'error');
+    }
+  };
+}
+
+const getDeleteProduct = (id) => ({
+  type: GET_DELETE_PRODUCT,
+  payload: id,
+});
+
+const getDeleteProductSuccess = () => ({
+  type: GET_DELETE_PRODUCT_SUCCESS,
+});
+
+const getDeleteProductError = (error) => ({
+  type: GET_DELETE_PRODUCT_ERROR,
   payload: true,
 });

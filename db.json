@@ -1,16 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Jugo de Zanahoria",
-      "cost": "31111"
-    },
-    {
-      "id": 2,
-      "name": "Jugo de Naranja",
-      "cost": "1"
-    },
-    {
       "name": "Jugo de Naranja",
       "cost": "300",
       "id": 3
@@ -34,16 +24,6 @@
       "name": "Prueba5",
       "cost": 13,
       "id": 7
-    },
-    {
-      "name": "Prueba56",
-      "cost": 13,
-      "id": 8
-    },
-    {
-      "name": "asdasd22",
-      "cost": 2,
-      "id": 9
     }
   ]
 }
